@@ -7,6 +7,19 @@
     color: #c5c5c5d7;
 }
 
+h1{
+    font-size: 2.5em;
+    padding: 0;
+}
+
+.cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 .line{
     border-bottom: 1px solid #c5c5c558;
     margin-top: 1vh;
