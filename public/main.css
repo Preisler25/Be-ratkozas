@@ -55,7 +55,7 @@ h1{
 }
 
 #history{
-    width: 70vw;
+    width: 80vw;
     height: 30vh;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -65,8 +65,25 @@ h1{
     justify-content: center;
 }
 
-#task1{
+#joinlist{
+    font-size: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 70vw;
+    height: 30vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: 1px solid #c5c5c5;
+    border-radius: 5px;
+    padding: 1vh;
+    justify-content: center;
+    margin-bottom: 10vh;
+}
+
+#task1{
+    width: 80vw;
     height: 30vh;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -78,7 +95,7 @@ h1{
 }
 
 #task2{
-    width: 70vw;
+    width: 80vw;
     height: 30vh;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -90,7 +107,7 @@ h1{
 }
 
 #task3{
-    width: 70vw;
+    width: 80vw;
     height: 30vh;
     overflow-y: scroll;
     overflow-x: hidden;
