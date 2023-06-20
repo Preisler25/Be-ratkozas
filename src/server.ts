@@ -137,6 +137,8 @@ io.on('connection', (socket: Socket) => {
         desk3_needs.push(message)
         need_help()
         get_history()
+        console.log(desk3_list);
+        console.log(desk3_needs);
     });
 
     socket.on('del3', (id: number) => {
