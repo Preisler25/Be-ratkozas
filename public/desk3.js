@@ -1,4 +1,4 @@
-const socket = io('http://192.168.1.199:3000');
+const socket = io(window.location.origin);
 
 socket.on('connect', () => {
     // Az eseményekhez tartozó kódok ide kerülnek
