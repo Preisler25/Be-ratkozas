@@ -10,3 +10,11 @@ socket.on('History', (data) => {
             document.getElementById('history').innerHTML += '<li>' + element + '</li>';
     });
 });
+
+let needHelp = () => {
+    socket.emit('desk1Need', 'desk1 need help');
+}
+
+let needTanu = () => {
+    socket.emit('desk1Need', 'desk1 need 18+');
+}
