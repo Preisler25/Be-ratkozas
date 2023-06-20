@@ -65,7 +65,9 @@ io.on('connection', (socket: Socket) => {
 
     socket.on('desk1Need', (message: string) => {
         desk1_needs.push(message)
+        console.log(desk1_needs);
         need_help()
+        get_history()
     });
 
     // --------------- desk2 ------------------
@@ -77,6 +79,7 @@ io.on('connection', (socket: Socket) => {
     socket.on('desk2Need', (message: string) => {
         desk2_needs.push(message)
         need_help()
+        get_history()
     });
 
     // --------------- desk3 ------------------
@@ -88,6 +91,7 @@ io.on('connection', (socket: Socket) => {
     socket.on('desk3Need', (message: string) => {
         desk3_needs.push(message)
         need_help()
+        get_history()
     });
 
 });
