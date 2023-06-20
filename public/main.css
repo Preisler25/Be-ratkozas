@@ -1,0 +1,16 @@
+.html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #282828;
+    color: #c5c5c5d7;
+}
+
+.line{
+    border-bottom: 1px solid #c5c5c558;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    height: 0;
+    width: 100%;
+}
