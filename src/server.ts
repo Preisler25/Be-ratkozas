@@ -93,6 +93,14 @@ io.on('connection', (socket: Socket) => {
         get_history()
     });
 
+    socket.on('del2', (id: number) => {
+        if (id >= 0 && id < desk2_needs.length) {
+            desk2_needs.splice(id, 1);
+            need_help();
+            get_history();
+        }
+    });
+
     // --------------- desk3 ------------------
     socket.on('desk3', () => {
         desk3_list.push(socket.id)
@@ -105,6 +113,13 @@ io.on('connection', (socket: Socket) => {
         get_history()
     });
 
+    socket.on('del3', (id: number) => {
+        if (id >= 0 && id < desk3_needs.length) {
+            desk3_needs.splice(id, 1);
+            need_help();
+            get_history();
+        }
+    });
 });
 
 app.get('/join', (req: Request, res: Response) => {
