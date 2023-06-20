@@ -56,6 +56,24 @@ io.on('connection', (socket: Socket) => {
         need_help()
     });
 
+    socket.on('onMyWay1', (id : number) => {
+        desk1_needs[id] += ' - 🏃'
+        need_help()
+        get_history()
+    });
+
+    socket.on('onMyWay2', (id : number) => {
+        desk2_needs[id] += ' - 🏃'
+        need_help()
+        get_history()
+    });
+
+    socket.on('onMyWay3', (id : number) => {
+        desk3_needs[id] += ' - 🏃'
+        need_help()
+        get_history()
+    });
+
     // --------------- desk1 ------------------
     socket.on('desk1', () => {
         desk1_list.push(socket.id)
@@ -79,7 +97,6 @@ io.on('connection', (socket: Socket) => {
             get_history();
         }
     });
-    
 
     // --------------- desk2 ------------------
     socket.on('desk2', () => {
