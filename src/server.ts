@@ -128,6 +128,8 @@ io.on('connection', (socket: Socket) => {
     // --------------- desk3 ------------------
     socket.on('desk3', () => {
         desk3_list.push(socket.id)
+        console.log(desk3_list);
+        console.log(desk3_needs);
         get_history()
     });
 
@@ -135,6 +137,8 @@ io.on('connection', (socket: Socket) => {
         desk3_needs.push(message)
         need_help()
         get_history()
+        console.log(desk3_list);
+        console.log(desk3_needs);
     });
 
     socket.on('del3', (id: number) => {
@@ -159,7 +163,7 @@ app.get('/join', (req: Request, res: Response) => {
     else if (req.query.q == '2') {
         res.sendFile(path.join(__dirname, '../public/desk2.html'))
     }
-    else if (req.query.q == '2') {
+    else if (req.query.q == '3') {
         res.sendFile(path.join(__dirname, '../public/desk3.html'))
     }
 });

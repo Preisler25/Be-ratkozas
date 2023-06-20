@@ -6,15 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/socket.io/socket.io.js" defer></script>
     <script src="desk2.js" defer></script>
+    <link rel="stylesheet" href="./main.css">
     <title>DESK2</title>
 </head>
 
 <body>
     <h1>DESK2</h1>
-    <a href="/"><button>back</button></a>
-    <button id="btn1" onclick="needHelp()">Help</button>
-    <button id="btn2" onclick="needTanu()">Tanúzás kell</button>
-    <div id="history"></div>
+    <div class="line"></div>
+    <a id="back_btn" href="/"><button class="btn">back</button></a>
+    <div id="cont">
+        <button id="btn1" class="btn" onclick="needHelp()">Help</button>
+        <button id="btn2" class="btn" onclick="needTanu()">Tanúzás kell</button>
+    </div>
+    <div class="line"></div>
+    <div id="cont2"><div id="history"></div></div>
 </body>
 
 </html>
