@@ -8,3 +8,4 @@ services:
       - 3000:3000  # Map the exposed container port to the host machine port
     volumes:
       - .:/app     # Mount the current directory to the container's working directory
+    restart: always
