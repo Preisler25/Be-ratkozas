@@ -7,8 +7,6 @@ socket.on('connect', () => {
 socket.on('History', (data) => {
     console.log(data);
     data.forEach(element => {
-        if(element.desk == 'desk1'){
-            $('#history').append('<li>'+element.desk+' : '+element.message+'</li>');
-        }
+            document.getElementById('history').innerHTML += '<li>' + element + '</li>';
     });
 });
