@@ -26,13 +26,13 @@ let need_help = () =>{
 }
 
 let get_history = () =>{
-    for (let i = 0; i < desk1_needs.length; i++) {
+    for (let i = 0; i < desk1_list.length; i++) {
         io.to(desk1_list[i]).emit('History', desk1_needs);
     }
-    for (let i = 0; i < desk2_needs.length; i++) {
+    for (let i = 0; i < desk2_list.length; i++) {
         io.to(desk2_list[i]).emit('History', desk2_needs);
     }
-    for (let i = 0; i < desk3_needs.length; i++) {
+    for (let i = 0; i < desk3_list.length; i++) {
         io.to(desk3_list[i]).emit('History', desk3_needs);
     }
 }
@@ -69,6 +69,17 @@ io.on('connection', (socket: Socket) => {
         need_help()
         get_history()
     });
+
+    socket.on('del1', (id: number) => {
+        console.log(id);
+        console.log(desk1_needs);
+        if (id >= 0 && id < desk1_needs.length) {
+            desk1_needs.splice(id, 1);
+            need_help();
+            get_history();
+        }
+    });
+    
 
     // --------------- desk2 ------------------
     socket.on('desk2', () => {

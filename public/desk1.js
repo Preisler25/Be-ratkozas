@@ -6,9 +6,9 @@ socket.on('connect', () => {
     socket.on('History', (data) => {
         console.log(data);
         document.getElementById('history').innerHTML = '';
-        data.forEach(element => {
-            document.getElementById('history').innerHTML += '<li>' + element + '</li>';
-        });
+        for(let i = 0; i < data.length; i++) {
+            document.getElementById('history').innerHTML += `<li> ${data[i]} <button class="del_btn" onclick="del(${i})">✅</button></li>`;
+        }
     });
 });
 
@@ -16,6 +16,10 @@ socket.on('disconnect', () => {
     console.log('Kapcsolat megszakadt');
 });
 
+
+let del = (i) => {
+    socket.emit('del1', i);
+}
 
 let needHelp = () => {
     socket.emit('desk1Need', 'desk1 need help');
