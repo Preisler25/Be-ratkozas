@@ -51,7 +51,7 @@ io.on('connection', (socket: Socket) => {
     });
 
     // --------------- helper ------------------
-    socket.on('helperJoin', () => {
+    socket.on('helper', () => {
         helper_list.push(socket.id)
         need_help()
     });

@@ -7,7 +7,7 @@ socket.on('connect', () => {
         console.log(data);
         document.getElementById('history').innerHTML = '';
         for(let i = 0; i < data.length; i++) {
-            document.getElementById('history').innerHTML += `<li> ${data[i]} <button class="del_btn" onclick="del(${i})">✅</button></li>`;
+            document.getElementById('history').innerHTML += `<li> ${data[i]} <button class="emoji_btn" onclick="del(${i})">✅</button></li>`;
         }
     });
 });
