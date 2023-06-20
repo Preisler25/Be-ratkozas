@@ -13,7 +13,7 @@ let desk1_list = []
 let desk2_list = []
 let desk3_list = []
 
-let desk1_needs = ['alma']
+let desk1_needs = []
 let desk2_needs = []
 let desk3_needs = []
 
@@ -57,19 +57,26 @@ io.on('connection', (socket: Socket) => {
     });
 
     socket.on('onMyWay1', (id : number) => {
-        desk1_needs[id] += ' - 🏃'
+        console.log(desk1_needs[id].slice(-1));
+        if (desk1_needs[id].slice(-1) !== '.'){
+            desk1_needs[id] += ' - 🏃.'
+        }
         need_help()
         get_history()
     });
 
     socket.on('onMyWay2', (id : number) => {
-        desk2_needs[id] += ' - 🏃'
+        if (desk2_needs[id].slice(-1) !== '.'){
+            desk2_needs[id] += ' - 🏃.'
+        }
         need_help()
         get_history()
     });
 
     socket.on('onMyWay3', (id : number) => {
-        desk3_needs[id] += ' - 🏃'
+        if (desk3_needs[id].slice(-1) !== '.'){
+            desk3_needs[id] += ' - 🏃.'
+        }
         need_help()
         get_history()
     });

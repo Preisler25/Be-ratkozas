@@ -22,9 +22,9 @@ let del = (i) => {
 }
 
 let needHelp = () => {
-    socket.emit('desk3Need', 'desk3 need help');
+    socket.emit('desk3Need', 'desk3 needs help');
 }
 
 let needTanu = () => {
-    socket.emit('desk3Need', 'desk3 need 18+');
+    socket.emit('desk3Need', 'desk3 needs 18+');
 }
