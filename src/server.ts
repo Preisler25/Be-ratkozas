@@ -13,62 +13,83 @@ let desk1_list = []
 let desk2_list = []
 let desk3_list = []
 
-let desk1_needs = []
+let desk1_needs = ['alma']
 let desk2_needs = []
 let desk3_needs = []
+
+let need_help = () =>{
+    for (let i = 0; i < helper_list.length; i++) {
+        io.to(helper_list[i]).emit('Task1', desk1_needs);
+        io.to(helper_list[i]).emit('Task2', desk2_needs);
+        io.to(helper_list[i]).emit('Task3', desk3_needs);
+    }
+}
+
+let get_history = () =>{
+    for (let i = 0; i < desk1_needs.length; i++) {
+        io.to(desk1_list[i]).emit('History', desk1_needs);
+    }
+    for (let i = 0; i < desk2_needs.length; i++) {
+        io.to(desk2_list[i]).emit('History', desk2_needs);
+    }
+    for (let i = 0; i < desk3_needs.length; i++) {
+        io.to(desk3_list[i]).emit('History', desk3_needs);
+    }
+}
+
 
 io.on('connection', (socket: Socket) => {
     socket.emit('connected', 'You are connected!');
 
     socket.on('disconnect', () => {
         console.log('A user disconnected');
-    });
-
-    socket.on('helperJoin', () => {
-        helper_list.push(socket.id)
-    });
-
-    socket.on('desk1', () => {
-        desk1_list.push(socket.id)
-        console.log(desk1_list)
-    });
-
-    socket.on('desk2', () => {
-        desk2_list.push(socket.id)
-    });
-
-    socket.on('desk3', () => {
-        desk3_list.push(socket.id)
-    });
-
-    socket.on('helperDisconnect', () => {
+        //delet user from every list
         helper_list = helper_list.filter(item => item !== socket.id)
-    });
-
-    socket.on('desk1Disconnect', () => {
         desk1_list = desk1_list.filter(item => item !== socket.id)
-    });
-
-    socket.on('desk2Disconnect', () => {
         desk2_list = desk2_list.filter(item => item !== socket.id)
-    });
-
-    socket.on('desk3Disconnect', () => {
         desk3_list = desk3_list.filter(item => item !== socket.id)
     });
 
-    socket.on('deskMessage', (message: string) => {
-        console.log('Received message:', message);
-
-        for (let i = 0; i < helper_list.length; i++) {
-            io.to(helper_list[i]).emit('Task', message);
-        }
+    // --------------- helper ------------------
+    socket.on('helperJoin', () => {
+        helper_list.push(socket.id)
+        need_help()
     });
 
-    socket.on('message', (message: string) => {
-        console.log('Received message:', message);
-        io.emit('message', message);
+    // --------------- desk1 ------------------
+    socket.on('desk1', () => {
+        desk1_list.push(socket.id)
+        console.log(desk1_list);
+        get_history()
     });
+
+    socket.on('desk1Need', (message: string) => {
+        desk1_needs.push(message)
+        need_help()
+    });
+
+    // --------------- desk2 ------------------
+    socket.on('desk2', () => {
+        desk2_list.push(socket.id)
+        get_history()
+    });
+
+    socket.on('desk2Need', (message: string) => {
+        desk2_needs.push(message)
+        need_help()
+    });
+
+    // --------------- desk3 ------------------
+    socket.on('desk3', () => {
+        desk3_list.push(socket.id)
+        get_history()
+    });
+
+    socket.on('desk3Need', (message: string) => {
+        desk3_needs.push(message)
+        need_help()
+    });
+
 });
 
 app.get('/join', (req: Request, res: Response) => {
