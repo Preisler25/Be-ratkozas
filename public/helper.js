@@ -1,26 +1,36 @@
 const socket = io(window.location.origin);
 
+if ('Notification' in window) {
+    // Engedélyezd a push értesítéseket
+    Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+            // Regisztrálj egy service worker-t
+
+        }
+    });
+}
+
 socket.on('connect', () => {
     // Az eseményekhez tartozó kódok ide kerülnek
     socket.emit('helper', 'helper connected');
     socket.on('Task1', (data) => {
         console.log(data);
         document.getElementById('task1').innerHTML = '<h1>Asztal1</h1>';
-        for(let i = 0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
             document.getElementById('task1').innerHTML += `<li> ${data[i]} <button class="btn" onclick="onMyWay1(${i})">🏃</button> <button class="btn" onclick="del1(${i})">✅</button></li>`;
         }
     });
     socket.on('Task2', (data) => {
         console.log(data);
         document.getElementById('task2').innerHTML = '<h1>Asztal2</h1>';
-        for(let i = 0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
             document.getElementById('task2').innerHTML += `<li> ${data[i]} <button class="btn" onclick="onMyWay2(${i})">🏃</button> <button class="btn" onclick="del2(${i})">✅</button></li>`;
         }
     });
     socket.on('Task3', (data) => {
         console.log(data);
         document.getElementById('task3').innerHTML = '<h1>Asztal3</h1>';
-        for(let i = 0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
             document.getElementById('task3').innerHTML += `<li> ${data[i]} <button class="btn" onclick="onMyWay3(${i})">🏃</button> <button class="btn" onclick="del3(${i})">✅</button></li>`;
         }
     });
