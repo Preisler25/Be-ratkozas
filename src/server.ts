@@ -17,7 +17,7 @@ let desk1_needs = []
 let desk2_needs = []
 let desk3_needs = []
 
-let need_help = () =>{
+let need_help = () => {
     for (let i = 0; i < helper_list.length; i++) {
         io.to(helper_list[i]).emit('Task1', desk1_needs);
         io.to(helper_list[i]).emit('Task2', desk2_needs);
@@ -25,7 +25,7 @@ let need_help = () =>{
     }
 }
 
-let get_history = () =>{
+let get_history = () => {
     for (let i = 0; i < desk1_list.length; i++) {
         io.to(desk1_list[i]).emit('History', desk1_needs);
     }
@@ -56,25 +56,25 @@ io.on('connection', (socket: Socket) => {
         need_help()
     });
 
-    socket.on('onMyWay1', (id : number) => {
+    socket.on('onMyWay1', (id: number) => {
         console.log(desk1_needs[id].slice(-1));
-        if (desk1_needs[id].slice(-1) !== '.'){
+        if (desk1_needs[id].slice(-1) !== '.') {
             desk1_needs[id] += ' - 🏃.'
         }
         need_help()
         get_history()
     });
 
-    socket.on('onMyWay2', (id : number) => {
-        if (desk2_needs[id].slice(-1) !== '.'){
+    socket.on('onMyWay2', (id: number) => {
+        if (desk2_needs[id].slice(-1) !== '.') {
             desk2_needs[id] += ' - 🏃.'
         }
         need_help()
         get_history()
     });
 
-    socket.on('onMyWay3', (id : number) => {
-        if (desk3_needs[id].slice(-1) !== '.'){
+    socket.on('onMyWay3', (id: number) => {
+        if (desk3_needs[id].slice(-1) !== '.') {
             desk3_needs[id] += ' - 🏃.'
         }
         need_help()

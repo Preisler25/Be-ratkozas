@@ -6,7 +6,7 @@ socket.on('connect', () => {
     socket.on('History', (data) => {
         console.log(data);
         document.getElementById('history').innerHTML = '';
-        for(let i = 0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
             document.getElementById('history').innerHTML += `<li> ${data[i]} <button class="btn" onclick="del(${i})">✅</button></li>`;
         }
     });
