@@ -83,20 +83,3 @@ function requestNotificationPermission() {
             });
     }
 }
-
-function showNotification(title, message) {
-    if ('Notification' in window && Notification.permission === 'granted') {
-        console.log("fasz")
-        const options = {
-            body: message,
-            icon: 'notif.jpeg'
-        };
-
-        const notification = new Notification(title, options);
-
-        notification.onclick = function () {
-            // Perform an action when the notification is clicked
-            window.location.href = 'https://example.com';
-        };
-    }
-}
